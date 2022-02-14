@@ -3,8 +3,12 @@ image:
 tasks:
   - name: Start Docker Daemon
     command: sudo docker-up &
-  - name: Use Pulumi
+  - before: "echo 'export PIP_USER=no' >> ~/.bashrc && export PIP_USER=no"
+    name: Use Pulumi
     command: pulumi login
+ports:
+  - port: 5000
+    onOpen: ignore
 vscode:
   extensions:
     - ms-python.python@2020.10.332292344:5ctthQ25Qni5/aAuOIUTYQ==
